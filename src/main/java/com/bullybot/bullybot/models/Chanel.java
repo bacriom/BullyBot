@@ -9,6 +9,7 @@ public class Chanel {
     @Id
     private String slackIdChanel;
     private String idVictim;
+    private boolean bulled;
 
     public Chanel() {
     }
@@ -33,11 +34,20 @@ public class Chanel {
         this.idVictim = idVictim;
     }
 
+    public boolean isBulled() {
+        return bulled;
+    }
+
+    public void setBulled(boolean bulled) {
+        this.bulled = bulled;
+    }
+
     @Override
     public String toString() {
         return "Chanel{" +
                 "slackIdChanel='" + slackIdChanel + '\'' +
                 ", idVictim='" + idVictim + '\'' +
+                ", bulled=" + bulled +
                 '}';
     }
 }

@@ -1,7 +1,5 @@
 package com.bullybot.bullybot.models;
 
-import org.springframework.boot.autoconfigure.web.ResourceProperties;
-
 import javax.persistence.*;
 
 
@@ -12,7 +10,7 @@ public class Question {
     @GeneratedValue
     private Long id;
     private String text;
-    private String idAnswer;
+    private String answerText;
     private String idChanel;
     private String idQuestioner;
     private String timeStamp;
@@ -20,9 +18,9 @@ public class Question {
     public Question() {
     }
 
-    public Question(String text, String idAnswer, String idChanel, String idQuestioner,String timeStamp) {
+    public Question(String text, String answerText, String idChanel, String idQuestioner, String timeStamp) {
         this.text = text;
-        this.idAnswer = idAnswer;
+        this.answerText = answerText;
         this.idChanel = idChanel;
         this.idQuestioner = idQuestioner;
         this.timeStamp = timeStamp;
@@ -45,12 +43,12 @@ public class Question {
         this.text = text;
     }
 
-    public String getIdAnswer() {
-        return idAnswer;
+    public String getAnswerText() {
+        return answerText;
     }
 
-    public void setIdAnswer(String idAnswer) {
-        this.idAnswer = idAnswer;
+    public void setAnswerText(String answerText) {
+        this.answerText = answerText;
     }
 
     public String getIdChanel() {
@@ -82,7 +80,7 @@ public class Question {
         return "Question{" +
                 "id=" + id +
                 ", text='" + text + '\'' +
-                ", idAnswer='" + idAnswer + '\'' +
+                ", answerText='" + answerText + '\'' +
                 ", idChanel='" + idChanel + '\'' +
                 ", idQuestioner='" + idQuestioner + '\'' +
                 '}';

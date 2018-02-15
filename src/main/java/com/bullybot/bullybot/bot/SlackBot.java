@@ -11,8 +11,6 @@ import me.ramswaroop.jbot.core.slack.Controller;
 import me.ramswaroop.jbot.core.slack.EventType;
 import me.ramswaroop.jbot.core.slack.models.Event;
 import me.ramswaroop.jbot.core.slack.models.Message;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -56,7 +54,7 @@ public class SlackBot extends Bot {
 
     @Controller(events = {EventType.DIRECT_MENTION, EventType.DIRECT_MESSAGE}, pattern = "help")
     public void showCommands(WebSocketSession session, Event event) {
-        reply(session, event, new Message("Type '@" + slackService.getCurrentUser().getName() + " configurate' to configurate a bulled"));
+        reply(session, event, new Message("Type '@" + slackService.getCurrentUser().getName() + " setup' to configurate a bulled"));
     }
 
     @Controller(events = {EventType.DIRECT_MENTION, EventType.DIRECT_MESSAGE}, pattern = "configurate", next = "confirmBulled")
@@ -67,11 +65,11 @@ public class SlackBot extends Bot {
 
     @Controller
     public void confirmBulled(WebSocketSession session, Event event) {
-        if (!event.getText().isEmpty() && event.getText().matches("<+@+\\w+>")) {
+        if (event.getText() != null && event.getText().matches("<+@+\\w+>")) {
             Chanel chanel = chanelRepository.findOne(event.getChannelId());
             chanel.setIdVictim(event.getText());
             chanelRepository.save(chanel);
-            reply(session, event, new Message("Bulled configurated ! Yei!!"));
+            reply(session, event, new Message("Bulled is: "+ event.getText()));
             stopConversation(event);
         } else {
             reply(session, event, new Message("It isn't a valid user"));
@@ -81,9 +79,8 @@ public class SlackBot extends Bot {
 
     @Controller(events = EventType.MESSAGE)
     public void onReceiveMessage(WebSocketSession session, Event event) {
-        //if (event.getText() != null && event.getText().matches("<@\\w+>.+\\?")) {
         List<Chanel> chanels = chanelRepository.findBySlackIdChanel(event.getChannelId());
-        if (!event.getText().isEmpty() && event.getText().matches(chanels.get(0).getIdVictim()+".+\\?")) {
+        if (event.getText() != null && event.getText().matches(chanels.get(0).getIdVictim()+".+\\?")) {
             reply(session, event, new Message("is a question"));
             saveQuestion(event);
         } else if(event.getThreadTs() != null) {
@@ -123,7 +120,7 @@ public class SlackBot extends Bot {
     public void setAnswer(Answer answer){
         List<Question> questions = null;
         questions = questionRepository.findByTimeStamp(answer.getIdThreadTs());
-        questions.get(0).setIdAnswer(answer.getText());
+        questions.get(0).setAnswerText(answer.getText());
         questionRepository.save(questions.get(0));
     }
 
