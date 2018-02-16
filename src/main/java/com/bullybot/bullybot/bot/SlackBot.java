@@ -14,6 +14,7 @@ import me.ramswaroop.jbot.core.slack.models.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 import org.springframework.web.socket.WebSocketSession;
 
 import java.util.List;
@@ -69,10 +70,13 @@ public class SlackBot extends Bot {
             Chanel chanel = chanelRepository.findOne(event.getChannelId());
             chanel.setIdVictim(event.getText());
             chanelRepository.save(chanel);
-            reply(session, event, new Message("Bulled is: "+ event.getText()));
+            reply(session, event, new Message("Bulled is: " + event.getText()));
+            stopConversation(event);
+        } else if (!StringUtils.isEmpty(event.getText()) && "cancel".equalsIgnoreCase(event.getText())) {
+            reply(session, event, new Message("Ok, you can setup the victim later."));
             stopConversation(event);
         } else {
-            reply(session, event, new Message("It isn't a valid user"));
+            reply(session, event, new Message("It isn't a valid user. Type `cancel` if you want to cancel the setup."));
         }
 
     }

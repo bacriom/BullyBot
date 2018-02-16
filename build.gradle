@@ -30,5 +30,6 @@ dependencies {
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	compile fileTree(dir: 'lib', include: '*.jar')
     compile("org.springframework.boot:spring-boot-starter-websocket")
+    compile "org.flywaydb:flyway-core:5.0.7"
 
 }
