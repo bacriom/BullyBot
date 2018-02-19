@@ -31,6 +31,7 @@ dependencies {
 	testCompile group: 'com.h2database', name: 'h2'
 	compile fileTree(dir: 'lib', include: '*.jar')
     compile("org.springframework.boot:spring-boot-starter-websocket")
-    compile "org.flywaydb:flyway-core:5.0.7"
+	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+	compile "org.flywaydb:flyway-core:5.0.7"
 
 }
