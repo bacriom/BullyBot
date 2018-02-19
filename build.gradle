@@ -28,6 +28,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	runtime('org.postgresql:postgresql')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile group: 'com.h2database', name: 'h2'
 	compile fileTree(dir: 'lib', include: '*.jar')
     compile("org.springframework.boot:spring-boot-starter-websocket")
     compile "org.flywaydb:flyway-core:5.0.7"
