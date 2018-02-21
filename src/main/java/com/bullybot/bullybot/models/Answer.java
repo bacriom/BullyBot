@@ -13,7 +13,7 @@ public class Answer {
     private String text;
     private String idThreadTs;
     private String timestamp;
-    boolean correctAnswer;
+    private boolean correctAnswer;
 
     public Answer() {
     }

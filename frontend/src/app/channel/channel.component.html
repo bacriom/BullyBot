@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>Channel List</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Channel</th>
+        <th>Victim</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let channel of channels">
+        <th>{{ channel.slackIdChanel }}</th>
+        <th>{{ channel.idVictim }}</th>
+        <td>Show Detail</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,14 +1,17 @@
 package com.bullybot.bullybot.models;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Chanel {
 
     @Id
-    private String slackIdChanel;
-    private String idVictim;
+    String slackIdChanel;
+    String idVictim;
+
     public Chanel() {
     }
 
