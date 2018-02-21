@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>Answer List</h1>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Answer</th>
+      <th>True Answer</th>
+      <th>Timestamp</th>
+      <th>Thread Timestamp</th>
+      <th>Show Detail</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let answer of answers">
+      <th>{{ answer.id }}</th>
+      <th>{{ answer.text }}</th>
+      <th>{{ answer.correctAnswer }}</th>
+      <th>{{ answer.timestamp }}</th>
+      <th>{{ answer.idThreadTs }}</th>
+      <td>Show Detail</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

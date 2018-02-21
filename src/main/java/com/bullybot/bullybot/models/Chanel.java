@@ -9,8 +9,8 @@ import javax.persistence.Id;
 public class Chanel {
 
     @Id
-    private String slackIdChanel;
-    private String idVictim;
+    String slackIdChanel;
+    String idVictim;
 
     public Chanel() {
     }

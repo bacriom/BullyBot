@@ -18,10 +18,11 @@ public class ChannelController {
     ChanelRepository chanelRepository;
 
     @RequestMapping(method = RequestMethod.GET, value = "/channels")
-    public Response findAll(){
-        List<Chanel> channels = chanelRepository.findAll();
+    public Iterable<Chanel> findAll(){
+        //List<Chanel> channels = chanelRepository.findAll();
 
-        return new Response("Done",channels);
+        //return new Response("Done",channels);
+        return chanelRepository.findAll();
     }
 
 }
