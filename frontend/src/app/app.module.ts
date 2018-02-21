@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AnswerComponent } from './answer/answer.component';
 import { QuestionComponent } from './question/question.component';
+import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
   {
@@ -28,9 +29,16 @@ const appRoutes: Routes = [
     component: QuestionComponent,
     data: { title: 'Questions List'}
   },
-  { path: '',
-    redirectTo: '/question',
+  {
+    path: 'home',
+    component: HomeComponent,
+    data: { title: 'Home' }
+  },
+  {
+    path:'',
+    redirectTo: '/home',
     pathMatch: 'full'
+
   }
 ];
 
@@ -39,7 +47,8 @@ const appRoutes: Routes = [
     AppComponent,
     ChannelComponent,
     AnswerComponent,
-    QuestionComponent
+    QuestionComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +57,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true }
-      )// <-- debugging purposes only
+      )// <--  <a routerLink="/channel" routerLinkActive="active-link">Channels</a>debugging purposes only
   ],
   providers: [],
   bootstrap: [AppComponent]

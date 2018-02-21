@@ -133,12 +133,14 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__answer_answer_component__ = __webpack_require__("./src/app/answer/answer.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__question_question_component__ = __webpack_require__("./src/app/question/question.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__home_home_component__ = __webpack_require__("./src/app/home/home.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -164,8 +166,14 @@ var appRoutes = [
         component: __WEBPACK_IMPORTED_MODULE_8__question_question_component__["a" /* QuestionComponent */],
         data: { title: 'Questions List' }
     },
-    { path: '',
-        redirectTo: '/question',
+    {
+        path: 'home',
+        component: __WEBPACK_IMPORTED_MODULE_9__home_home_component__["a" /* HomeComponent */],
+        data: { title: 'Home' }
+    },
+    {
+        path: '',
+        redirectTo: '/home',
         pathMatch: 'full'
     }
 ];
@@ -178,13 +186,14 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */],
                 __WEBPACK_IMPORTED_MODULE_4__channel_channel_component__["a" /* ChannelComponent */],
                 __WEBPACK_IMPORTED_MODULE_7__answer_answer_component__["a" /* AnswerComponent */],
-                __WEBPACK_IMPORTED_MODULE_8__question_question_component__["a" /* QuestionComponent */]
+                __WEBPACK_IMPORTED_MODULE_8__question_question_component__["a" /* QuestionComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__home_home_component__["a" /* HomeComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_5__angular_forms__["a" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_6__angular_common_http__["b" /* HttpClientModule */],
-                __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* RouterModule */].forRoot(appRoutes, { enableTracing: true }) // <-- debugging purposes only
+                __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* RouterModule */].forRoot(appRoutes, { enableTracing: true }) // <--  <a routerLink="/channel" routerLinkActive="active-link">Channels</a>debugging purposes only
             ],
             providers: [],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */]]
@@ -254,6 +263,56 @@ var ChannelComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/home/home.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/home/home.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<body>\n<h1>Bully Bot</h1>\n<a [routerLink]=\"['/channel']\">Channels</a>\n<a [routerLink]=\"['/answer']\">Answer</a>\n<a [routerLink]=\"['/question']\">Questions</a>\n</body>\n"
+
+/***/ }),
+
+/***/ "./src/app/home/home.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var HomeComponent = /** @class */ (function () {
+    function HomeComponent() {
+    }
+    HomeComponent.prototype.ngOnInit = function () {
+    };
+    HomeComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-home',
+            template: __webpack_require__("./src/app/home/home.component.html"),
+            styles: [__webpack_require__("./src/app/home/home.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], HomeComponent);
+    return HomeComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/question/question.component.css":
 /***/ (function(module, exports) {
 
@@ -264,7 +323,7 @@ module.exports = ""
 /***/ "./src/app/question/question.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <h1>Questions List</h1>\n  <table class=\"table\">\n    <thead>\n    <tr>\n      <th>Id</th>\n      <th>Channel</th>\n      <th>Questioner</th>\n      <th>Question</th>\n      <th>Answer</th>\n      <th>Timestamp</th>\n      <th>Show Detail</th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr *ngFor=\"let question of questions\">\n      <th>{{ question.id }}</th>\n      <th>{{ question.idChanel }}</th>\n      <th>{{ question.idQuestioner }}</th>\n      <th>{{ question.text }}</th>\n      <th>{{ question.answerText }}</th>\n      <th>{{ question.timeStamp }}</th>\n      <td>Show Detail</td>\n    </tr>\n    </tbody>\n  </table>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <h1>Questions List</h1>\n  <table class=\"table\">\n    <thead>\n    <tr>\n      <th>Id</th>\n      <th>Channel</th>\n      <th>Questioner</th>\n      <th>Question</th>\n      <th>Answer</th>\n      <th>Timestamp</th>\n      <th>Show Detail</th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr *ngFor=\"let question of questions\">\n      <th>{{ question.id }}</th>\n      <th>{{ question.idChanel }}</th>\n      <th>{{ question.idQuestioner }}</th>\n      <th>{{ question.text }}</th>\n      <th>{{ question.answerText }}</th>\n      <th>{{ question.timeStamp }}</th>\n      <td><a [routerLink]=\"['/channel']\">Show Detail</a></td>\n    </tr>\n    </tbody>\n  </table>\n</div>\n"
 
 /***/ }),
 
