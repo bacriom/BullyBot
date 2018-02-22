@@ -10,9 +10,9 @@
     </thead>
     <tbody>
       <tr *ngFor="let channel of channels">
-        <th>{{ channel.slackIdChanel }}</th>
-        <th>{{ channel.idVictim }}</th>
-        <td>Show Detail</td>
+        <td>{{ channel.slackIdChanel }}</td>
+        <td>{{ channel.idVictim }}</td>
+        <td><a [routerLink]="['/channel-questions', channel.slackIdChanel]">Show Questions</a></td>
       </tr>
     </tbody>
   </table>

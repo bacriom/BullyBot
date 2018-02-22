@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AnswerComponent } from './answer/answer.component';
 import { QuestionComponent } from './question/question.component';
 import { HomeComponent } from './home/home.component';
+import { ChannelQuestionsComponent } from './channel-questions/channel-questions.component';
 
 const appRoutes: Routes = [
   {
@@ -28,6 +29,11 @@ const appRoutes: Routes = [
     path: 'question',
     component: QuestionComponent,
     data: { title: 'Questions List'}
+  },
+  {
+    path: 'channel-questions/:id',
+    component: ChannelQuestionsComponent,
+    data: {title: 'Channel Questions'}
   },
   {
     path: 'home',
@@ -48,7 +54,8 @@ const appRoutes: Routes = [
     ChannelComponent,
     AnswerComponent,
     QuestionComponent,
-    HomeComponent
+    HomeComponent,
+    ChannelQuestionsComponent,
   ],
   imports: [
     BrowserModule,
