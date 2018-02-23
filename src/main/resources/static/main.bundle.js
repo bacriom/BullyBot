@@ -27,7 +27,7 @@ module.exports = ""
 /***/ "./src/app/answers/answers.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <h1>Answer</h1>\n  <table class=\"table\">\n    <thead>\n    <tr>\n      <th>Id</th>\n      <th>Text</th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr *ngFor=\"let answer of answers\">\n      <td>{{ answer.id }}</td>\n      <td>{{ answer.text }}</td>\n    </tr>\n    </tbody>\n  </table>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <mat-toolbar color = \"primary\">\n    <span>Answers</span>\n  </mat-toolbar>\n\n  <table class=\"table\">\n    <thead>\n    <tr>\n      <th>Id</th>\n      <th>Text</th>\n      <th>Correct Answer</th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr *ngFor=\"let answer of answers\">\n      <td>{{ answer.id }}</td>\n      <td>{{ answer.text }}</td>\n      <td>{{ answer.correctAnswer }}}</td>\n    </tr>\n    </tbody>\n  </table>\n</div>\n"
 
 /***/ }),
 
@@ -140,12 +140,18 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__home_home_component__ = __webpack_require__("./src/app/home/home.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__channel_questions_channel_questions_component__ = __webpack_require__("./src/app/channel-questions/channel-questions.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__answers_answers_component__ = __webpack_require__("./src/app/answers/answers.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_material_toolbar__ = __webpack_require__("./node_modules/@angular/material/esm5/toolbar.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_material_card__ = __webpack_require__("./node_modules/@angular/material/esm5/card.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
 
 
 
@@ -187,7 +193,7 @@ var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["K" /* NgModule */])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */],
                 __WEBPACK_IMPORTED_MODULE_4__channel_channel_component__["a" /* ChannelComponent */],
@@ -197,7 +203,10 @@ var AppModule = /** @class */ (function () {
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_5__angular_forms__["a" /* FormsModule */],
+                __WEBPACK_IMPORTED_MODULE_12__angular_material__["a" /* MatButtonModule */],
+                __WEBPACK_IMPORTED_MODULE_5__angular_forms__["c" /* FormsModule */],
+                __WEBPACK_IMPORTED_MODULE_10__angular_material_toolbar__["a" /* MatToolbarModule */],
+                __WEBPACK_IMPORTED_MODULE_11__angular_material_card__["a" /* MatCardModule */],
                 __WEBPACK_IMPORTED_MODULE_6__angular_common_http__["b" /* HttpClientModule */],
                 __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* RouterModule */].forRoot(appRoutes, { enableTracing: true }) // <--  <a routerLink="/channel" routerLinkActive="active-link">Channels</a>debugging purposes only
             ],
@@ -222,7 +231,7 @@ module.exports = ""
 /***/ "./src/app/channel-questions/channel-questions.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <h1>Questions List</h1>\n  <table class=\"table\">\n    <thead>\n    <tr>\n      <th>Id</th>\n      <th>Channel</th>\n      <th>Questioner</th>\n      <th>Question</th>\n      <th>Answer</th>\n      <th>Timestamp</th>\n      <th>Show Detail</th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr *ngFor=\"let question of questions\">\n      <th>{{ question.id }}</th>\n      <th>{{ question.idChanel }}</th>\n      <th>{{ question.idQuestioner }}</th>\n      <th>{{ question.text }}</th>\n      <th>{{ question.answerText }}</th>\n      <th>{{ question.timeStamp }}</th>\n      <td><a [routerLink]=\"['/answers/', question.timeStamp]\">Show Answer</a></td>\n    </tr>\n    </tbody>\n  </table>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <mat-toolbar color = \"primary\">\n    <span>Questions</span>\n  </mat-toolbar>\n  <table class=\"table\">\n    <thead>\n    <tr>\n      <th>Id</th>\n      <th>Channel</th>\n      <th>Questioner</th>\n      <th>Question</th>\n      <th>Answer</th>\n      <th>Timestamp</th>\n      <th>Show Detail</th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr *ngFor=\"let question of questions\">\n      <td>{{ question.id }}</td>\n      <td>{{ question.idChanel }}</td>\n      <td>{{ question.idQuestioner }}</td>\n      <td>{{ question.text }}</td>\n      <td>{{ question.answerText }}</td>\n      <td>{{ question.timeStamp }}</td>\n      <td><a [routerLink]=\"['/answers/', question.timeStamp]\">Show Answer</a></td>\n    </tr>\n    </tbody>\n  </table>\n</div>\n"
 
 /***/ }),
 
@@ -285,7 +294,7 @@ module.exports = ""
 /***/ "./src/app/channel/channel.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <h1>Channel List</h1>\n  <table class=\"table\">\n    <thead>\n      <tr>\n        <th>Channel</th>\n        <th>Victim</th>\n        <th>Action</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr *ngFor=\"let channel of channels\">\n        <td>{{ channel.slackIdChanel }}</td>\n        <td>{{ channel.idVictim }}</td>\n        <td><a [routerLink]=\"['/channel-questions', channel.slackIdChanel]\">Show Questions</a></td>\n      </tr>\n    </tbody>\n  </table>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <mat-toolbar color = \"primary\">\n    <span>Channel</span>\n  </mat-toolbar>\n\n  <table class=\"table\">\n    <thead>\n      <tr>\n        <th>Channel</th>\n        <th>Victim</th>\n        <th>Action</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr *ngFor=\"let channel of channels\">\n        <td>{{ channel.slackIdChanel }}</td>\n        <td>{{ channel.idVictim }}</td>\n        <td><a [routerLink]=\"['/channel-questions', channel.slackIdChanel]\">Show Questions</a></td>\n      </tr>\n    </tbody>\n  </table>\n</div>\n"
 
 /***/ }),
 
@@ -342,7 +351,7 @@ module.exports = ""
 /***/ "./src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<body>\n<h1>Bully Bot</h1>\n<a [routerLink]=\"['/channel']\">Channels</a>\n</body>\n"
+module.exports = "<body>\n<mat-toolbar color = \"primary\">\n  <span>Bully Bot</span>\n</mat-toolbar>\n\n<mat-card>\n  <button mat-raised-button color=\"accent\" [routerLink]=\"['/channel']\">Channels</button>\n  <!--<a [routerLink]=\"['/channel']\">Channels</a>-->\n</mat-card>\n</body>\n"
 
 /***/ }),
 
@@ -412,7 +421,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_13" /* enableProdMode */])();
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_17" /* enableProdMode */])();
 }
 Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */])
     .catch(function (err) { return console.log(err); });
