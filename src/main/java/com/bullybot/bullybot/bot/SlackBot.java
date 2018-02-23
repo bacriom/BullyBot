@@ -84,13 +84,19 @@ public class SlackBot extends Bot {
     @Controller(events = EventType.MESSAGE)
     public void onReceiveMessage(WebSocketSession session, Event event) {
         List<Chanel> chanels = chanelRepository.findBySlackIdChanel(event.getChannelId());
-        if (event.getText() != null && event.getText().matches(chanels.get(0).getIdVictim()+".+\\?") && chanels.get(0).getIdVictim() != null) {
-            saveQuestion(event);
-        }else if(StringUtils.isEmpty(chanels.get(0).getIdVictim()) && event.getText().matches("<@+\\w+>.+\\?")){
-            reply(session, event, new Message("sorry there is no bullied yet, you can configure the bullied using " + slackService.getCurrentUser().getName() + " `setup`"));
-        } else if(event.getThreadTs() != null) {
-        saveAnswer(event);
+        if(!chanels.isEmpty()){
+            if (event.getText() != null && event.getText().matches(chanels.get(0).getIdVictim()+".+\\?") && chanels.get(0).getIdVictim() != null) {
+                saveQuestion(event);
+            }else if(StringUtils.isEmpty(chanels.get(0).getIdVictim()) && event.getText().matches("<@+\\w+>.+\\?")){
+                reply(session, event, new Message("sorry there is no bullied yet, you can configure the bullied using " + slackService.getCurrentUser().getName() + " `setup`"));
+            } else if(event.getThreadTs() != null) {
+                saveAnswer(event);
+            }
         }
+        else{
+            reply(session, event, new Message("Something is wrong :(, there isn't a channel"));
+        }
+
     }
 
     @Controller(events = EventType.REACTION_ADDED)
