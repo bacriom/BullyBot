@@ -70,7 +70,7 @@ public class SlackBot extends Bot {
             Chanel chanel = chanelRepository.findOne(event.getChannelId());
             chanel.setIdVictim(event.getText());
             chanelRepository.save(chanel);
-            reply(session, event, new Message("Bulled is: " + event.getText()));
+            reply(session, event, new Message("Habemus Victim"));
             stopConversation(event);
         } else if (!StringUtils.isEmpty(event.getText()) && "cancel".equalsIgnoreCase(event.getText())) {
             reply(session, event, new Message("Ok, you can setup the victim later."));
@@ -103,11 +103,18 @@ public class SlackBot extends Bot {
     public void onRecivedRA(WebSocketSession session, Event event){
             if (event.getReaction().equals("+1")) {
                 reply(session, event, new Message("reaccion"));
-                correctAnswer(event);
+                correctAnswer(event,true);
             } else {
                 reply(session, event, new Message("Nop"));
             }
         }
+
+    @Controller(events = EventType.REACTION_REMOVED)
+    public void onRecivedRmReaction(WebSocketSession session, Event event){
+        if (event.getReaction().equals("+1")){
+            correctAnswer(event,false);
+        }
+    }
 
     public void saveAnswer(Event event){
         List<Question> questions = null;
@@ -120,18 +127,22 @@ public class SlackBot extends Bot {
         questionRepository.save(question);
         }
 
-    public void correctAnswer(Event event){
+    public void correctAnswer(Event event, Boolean flag){
         List<Answer> answers = null;
         answers = answerRepository.findByTimestamp(event.getItem().getTs());
-        answers.get(0).setCorrectAnswer(true);
+        answers.get(0).setCorrectAnswer(flag);
         answerRepository.save(answers.get(0));
-        setAnswer(answers.get(0));
+        if(flag){
+            setAnswer(answers.get(0), answers.get(0).getText());
+        } else {
+            setAnswer(answers.get(0),"");
+        }
     }
 
-    public void setAnswer(Answer answer){
+    public void setAnswer(Answer answer, String text){
         List<Question> questions = null;
         questions = questionRepository.findByTimeStamp(answer.getIdThreadTs());
-        questions.get(0).setAnswerText(answer.getText());
+        questions.get(0).setAnswerText(text);
         questionRepository.save(questions.get(0));
     }
 
