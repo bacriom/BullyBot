@@ -17,27 +17,28 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
-/***/ "./src/app/answer/answer.component.css":
+/***/ "./src/app/answers/answers.component.css":
 /***/ (function(module, exports) {
 
 module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/answer/answer.component.html":
+/***/ "./src/app/answers/answers.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <h1>Answer List</h1>\n  <table class=\"table\">\n    <thead>\n    <tr>\n      <th>Id</th>\n      <th>Answer</th>\n      <th>True Answer</th>\n      <th>Timestamp</th>\n      <th>Thread Timestamp</th>\n      <th>Show Detail</th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr *ngFor=\"let answer of answers\">\n      <th>{{ answer.id }}</th>\n      <th>{{ answer.text }}</th>\n      <th>{{ answer.correctAnswer }}</th>\n      <th>{{ answer.timestamp }}</th>\n      <th>{{ answer.idThreadTs }}</th>\n      <td>Show Detail</td>\n    </tr>\n    </tbody>\n  </table>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <h1>Answer</h1>\n  <table class=\"table\">\n    <thead>\n    <tr>\n      <th>Id</th>\n      <th>Text</th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr *ngFor=\"let answer of answers\">\n      <td>{{ answer.id }}</td>\n      <td>{{ answer.text }}</td>\n    </tr>\n    </tbody>\n  </table>\n</div>\n"
 
 /***/ }),
 
-/***/ "./src/app/answer/answer.component.ts":
+/***/ "./src/app/answers/answers.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AnswerComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AnswersComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -49,25 +50,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var AnswerComponent = /** @class */ (function () {
-    function AnswerComponent(http) {
+
+var AnswersComponent = /** @class */ (function () {
+    function AnswersComponent(route, http) {
+        this.route = route;
         this.http = http;
     }
-    AnswerComponent.prototype.ngOnInit = function () {
+    AnswersComponent.prototype.ngOnInit = function () {
+        this.getAnswers(this.route.snapshot.params['id']);
+    };
+    AnswersComponent.prototype.getAnswers = function (id) {
         var _this = this;
-        this.http.get('/answers').subscribe(function (data) {
+        this.http.get('/answers/' + id).subscribe(function (data) {
             _this.answers = data;
         });
     };
-    AnswerComponent = __decorate([
+    AnswersComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'app-answer',
-            template: __webpack_require__("./src/app/answer/answer.component.html"),
-            styles: [__webpack_require__("./src/app/answer/answer.component.css")]
+            selector: 'app-answers',
+            template: __webpack_require__("./src/app/answers/answers.component.html"),
+            styles: [__webpack_require__("./src/app/answers/answers.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
-    ], AnswerComponent);
-    return AnswerComponent;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
+    ], AnswersComponent);
+    return AnswersComponent;
 }());
 
 
@@ -131,17 +137,15 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__channel_channel_component__ = __webpack_require__("./src/app/channel/channel.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__answer_answer_component__ = __webpack_require__("./src/app/answer/answer.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__question_question_component__ = __webpack_require__("./src/app/question/question.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__home_home_component__ = __webpack_require__("./src/app/home/home.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__channel_questions_channel_questions_component__ = __webpack_require__("./src/app/channel-questions/channel-questions.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__home_home_component__ = __webpack_require__("./src/app/home/home.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__channel_questions_channel_questions_component__ = __webpack_require__("./src/app/channel-questions/channel-questions.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__answers_answers_component__ = __webpack_require__("./src/app/answers/answers.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 
 
@@ -159,23 +163,18 @@ var appRoutes = [
         data: { title: 'Channel List' }
     },
     {
-        path: 'answer',
-        component: __WEBPACK_IMPORTED_MODULE_7__answer_answer_component__["a" /* AnswerComponent */],
-        data: { title: 'Answer List' }
-    },
-    {
-        path: 'question',
-        component: __WEBPACK_IMPORTED_MODULE_8__question_question_component__["a" /* QuestionComponent */],
-        data: { title: 'Questions List' }
-    },
-    {
         path: 'channel-questions/:id',
-        component: __WEBPACK_IMPORTED_MODULE_10__channel_questions_channel_questions_component__["a" /* ChannelQuestionsComponent */],
+        component: __WEBPACK_IMPORTED_MODULE_8__channel_questions_channel_questions_component__["a" /* ChannelQuestionsComponent */],
         data: { title: 'Channel Questions' }
     },
     {
+        path: 'answers/:id',
+        component: __WEBPACK_IMPORTED_MODULE_9__answers_answers_component__["a" /* AnswersComponent */],
+        data: { title: 'Answers' }
+    },
+    {
         path: 'home',
-        component: __WEBPACK_IMPORTED_MODULE_9__home_home_component__["a" /* HomeComponent */],
+        component: __WEBPACK_IMPORTED_MODULE_7__home_home_component__["a" /* HomeComponent */],
         data: { title: 'Home' }
     },
     {
@@ -192,10 +191,9 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */],
                 __WEBPACK_IMPORTED_MODULE_4__channel_channel_component__["a" /* ChannelComponent */],
-                __WEBPACK_IMPORTED_MODULE_7__answer_answer_component__["a" /* AnswerComponent */],
-                __WEBPACK_IMPORTED_MODULE_8__question_question_component__["a" /* QuestionComponent */],
-                __WEBPACK_IMPORTED_MODULE_9__home_home_component__["a" /* HomeComponent */],
-                __WEBPACK_IMPORTED_MODULE_10__channel_questions_channel_questions_component__["a" /* ChannelQuestionsComponent */],
+                __WEBPACK_IMPORTED_MODULE_7__home_home_component__["a" /* HomeComponent */],
+                __WEBPACK_IMPORTED_MODULE_8__channel_questions_channel_questions_component__["a" /* ChannelQuestionsComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__answers_answers_component__["a" /* AnswersComponent */],
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -224,7 +222,7 @@ module.exports = ""
 /***/ "./src/app/channel-questions/channel-questions.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <h1>Questions List</h1>\n  <table class=\"table\">\n    <thead>\n    <tr>\n      <th>Id</th>\n      <th>Channel</th>\n      <th>Questioner</th>\n      <th>Question</th>\n      <th>Answer</th>\n      <th>Timestamp</th>\n      <th>Show Detail</th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr *ngFor=\"let question of channel\">\n      <th>{{ question.id }}</th>\n      <th>{{ question.idChanel }}</th>\n      <th>{{ question.idQuestioner }}</th>\n      <th>{{ question.text }}</th>\n      <th>{{ question.answerText }}</th>\n      <th>{{ question.timeStamp }}</th>\n      <td><a [routerLink]=\"['/channel']\">Show Detail</a></td>\n    </tr>\n    </tbody>\n  </table>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <h1>Questions List</h1>\n  <table class=\"table\">\n    <thead>\n    <tr>\n      <th>Id</th>\n      <th>Channel</th>\n      <th>Questioner</th>\n      <th>Question</th>\n      <th>Answer</th>\n      <th>Timestamp</th>\n      <th>Show Detail</th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr *ngFor=\"let question of questions\">\n      <th>{{ question.id }}</th>\n      <th>{{ question.idChanel }}</th>\n      <th>{{ question.idQuestioner }}</th>\n      <th>{{ question.text }}</th>\n      <th>{{ question.answerText }}</th>\n      <th>{{ question.timeStamp }}</th>\n      <td><a [routerLink]=\"['/answers/', question.timeStamp]\">Show Answer</a></td>\n    </tr>\n    </tbody>\n  </table>\n</div>\n"
 
 /***/ }),
 
@@ -259,7 +257,7 @@ var ChannelQuestionsComponent = /** @class */ (function () {
     ChannelQuestionsComponent.prototype.getChannelQuestions = function (id) {
         var _this = this;
         this.http.get('/questions/' + id).subscribe(function (data) {
-            _this.channel = data;
+            _this.questions = data;
         });
     };
     ChannelQuestionsComponent = __decorate([
@@ -378,63 +376,6 @@ var HomeComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], HomeComponent);
     return HomeComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/question/question.component.css":
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/question/question.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"container\">\n  <h1>Questions List</h1>\n  <table class=\"table\">\n    <thead>\n    <tr>\n      <th>Id</th>\n      <th>Channel</th>\n      <th>Questioner</th>\n      <th>Question</th>\n      <th>Answer</th>\n      <th>Timestamp</th>\n      <th>Show Detail</th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr *ngFor=\"let question of questions\">\n      <th>{{ question.id }}</th>\n      <th>{{ question.idChanel }}</th>\n      <th>{{ question.idQuestioner }}</th>\n      <th>{{ question.text }}</th>\n      <th>{{ question.answerText }}</th>\n      <th>{{ question.timeStamp }}</th>\n      <td><a [routerLink]=\"['/channel']\">Show Detail</a></td>\n    </tr>\n    </tbody>\n  </table>\n</div>\n"
-
-/***/ }),
-
-/***/ "./src/app/question/question.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return QuestionComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var QuestionComponent = /** @class */ (function () {
-    function QuestionComponent(http) {
-        this.http = http;
-    }
-    QuestionComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.http.get('/questions').subscribe(function (data) {
-            _this.questions = data;
-        });
-    };
-    QuestionComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'app-question',
-            template: __webpack_require__("./src/app/question/question.component.html"),
-            styles: [__webpack_require__("./src/app/question/question.component.css")]
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
-    ], QuestionComponent);
-    return QuestionComponent;
 }());
 
 

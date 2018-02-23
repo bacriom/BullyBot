@@ -9,10 +9,9 @@ import { ChannelComponent } from './channel/channel.component';
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AnswerComponent } from './answer/answer.component';
-import { QuestionComponent } from './question/question.component';
 import { HomeComponent } from './home/home.component';
 import { ChannelQuestionsComponent } from './channel-questions/channel-questions.component';
+import { AnswersComponent } from './answers/answers.component';
 
 const appRoutes: Routes = [
   {
@@ -21,19 +20,14 @@ const appRoutes: Routes = [
     data: { title: 'Channel List' }
   },
   {
-    path: 'answer',
-    component: AnswerComponent,
-    data: { title: 'Answer List' }
-  },
-  {
-    path: 'question',
-    component: QuestionComponent,
-    data: { title: 'Questions List'}
-  },
-  {
     path: 'channel-questions/:id',
     component: ChannelQuestionsComponent,
     data: {title: 'Channel Questions'}
+  },
+  {
+    path: 'answers/:id',
+    component: AnswersComponent,
+    data: {title: 'Answers'}
   },
   {
     path: 'home',
@@ -52,10 +46,9 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     ChannelComponent,
-    AnswerComponent,
-    QuestionComponent,
     HomeComponent,
     ChannelQuestionsComponent,
+    AnswersComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ChannelQuestionsComponent implements OnInit {
 
-  channel: {}
+  questions: {}
 
   constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
@@ -21,7 +21,7 @@ export class ChannelQuestionsComponent implements OnInit {
 
   getChannelQuestions(id) {
     this.http.get('/questions/' + id).subscribe(data => {
-      this.channel = data;
+      this.questions = data;
     });
   }
   }

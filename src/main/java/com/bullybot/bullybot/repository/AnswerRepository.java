@@ -10,5 +10,7 @@ import java.util.List;
 public interface AnswerRepository extends JpaRepository<Answer,Long>{
 
     List<Answer> findByTimestamp(String ts);
-    List<Answer> findByIdThreadTs(String threadTs);
+    List<Answer> findAllByIdThreadTs(String th);
+    List<Answer> findById(long id);
+    List<Answer> findByCorrectAnswer(boolean flag);
 }

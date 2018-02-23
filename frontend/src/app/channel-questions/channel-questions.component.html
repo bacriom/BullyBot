@@ -13,14 +13,14 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let question of channel">
+    <tr *ngFor="let question of questions">
       <th>{{ question.id }}</th>
       <th>{{ question.idChanel }}</th>
       <th>{{ question.idQuestioner }}</th>
       <th>{{ question.text }}</th>
       <th>{{ question.answerText }}</th>
       <th>{{ question.timeStamp }}</th>
-      <td><a [routerLink]="['/channel']">Show Detail</a></td>
+      <td><a [routerLink]="['/answers/', question.timeStamp]">Show Answer</a></td>
     </tr>
     </tbody>
   </table>
