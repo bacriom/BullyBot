@@ -13,6 +13,14 @@ import { HomeComponent } from './home/home.component';
 import { ChannelQuestionsComponent } from './channel-questions/channel-questions.component';
 import { AnswersComponent } from './answers/answers.component';
 
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
+import {
+  MatButtonModule,
+  MatMenuModule,
+  MatIconModule
+} from '@angular/material';
+
 const appRoutes: Routes = [
   {
     path: 'channel',
@@ -52,7 +60,10 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    MatButtonModule,
     FormsModule,
+    MatToolbarModule,
+    MatCardModule,
     HttpClientModule,
     RouterModule.forRoot(
       appRoutes,
