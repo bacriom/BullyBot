@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Answer</h1>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Text</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let answer of answers">
+      <td>{{ answer.id }}</td>
+      <td>{{ answer.text }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

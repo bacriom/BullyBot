@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>Questions List</h1>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Channel</th>
+      <th>Questioner</th>
+      <th>Question</th>
+      <th>Answer</th>
+      <th>Timestamp</th>
+      <th>Show Detail</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let question of questions">
+      <th>{{ question.id }}</th>
+      <th>{{ question.idChanel }}</th>
+      <th>{{ question.idQuestioner }}</th>
+      <th>{{ question.text }}</th>
+      <th>{{ question.answerText }}</th>
+      <th>{{ question.timeStamp }}</th>
+      <td><a [routerLink]="['/answers/', question.timeStamp]">Show Answer</a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

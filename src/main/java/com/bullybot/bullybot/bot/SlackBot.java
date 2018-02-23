@@ -118,12 +118,14 @@ public class SlackBot extends Bot {
 
     public void saveAnswer(Event event){
         List<Question> questions = null;
-        Answer answer = new Answer(event.getText(),event.getThreadTs(),event.getTs(),false);
+        String [] parts = event.getThreadTs().split("\\.");
+        Answer answer = new Answer(event.getText(),parts[0],event.getTs(),false);
         answerRepository.save(answer);
     }
 
     public void saveQuestion(Event event){
-        Question question = new Question(event.getText(), null, event.getChannelId(), event.getUserId(), event.getTs());
+        String [] parts = event.getTs().split("\\.");
+        Question question = new Question(event.getText(), null, event.getChannelId(), event.getUserId(), parts[0]);
         questionRepository.save(question);
         }
 
