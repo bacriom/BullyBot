@@ -58,7 +58,7 @@ public class SlackBot extends Bot {
         reply(session, event, new Message("Type '@" + slackService.getCurrentUser().getName() + " setup' to configurate a bulled"));
     }
 
-    @Controller(events = {EventType.DIRECT_MENTION, EventType.DIRECT_MESSAGE}, pattern = "configurate", next = "confirmBulled")
+    @Controller(events = {EventType.DIRECT_MENTION, EventType.DIRECT_MESSAGE}, pattern = "setup", next = "confirmBulled")
     public void setBulled(WebSocketSession session, Event event) {
         startConversation(event, "confirmBulled");
         reply(session, event, new Message("Cool, who will be the bulled?"));
@@ -84,12 +84,19 @@ public class SlackBot extends Bot {
     @Controller(events = EventType.MESSAGE)
     public void onReceiveMessage(WebSocketSession session, Event event) {
         List<Chanel> chanels = chanelRepository.findBySlackIdChanel(event.getChannelId());
-        if (event.getText() != null && event.getText().matches(chanels.get(0).getIdVictim()+".+\\?")) {
-            reply(session, event, new Message("is a question"));
-            saveQuestion(event);
-        } else if(event.getThreadTs() != null) {
-            saveAnswer(event);
+        if(!chanels.isEmpty()){
+            if (event.getText() != null && event.getText().matches(chanels.get(0).getIdVictim()+".+\\?") && chanels.get(0).getIdVictim() != null) {
+                saveQuestion(event);
+            }else if(StringUtils.isEmpty(chanels.get(0).getIdVictim()) && event.getText().matches("<@+\\w+>.+\\?")){
+                reply(session, event, new Message("sorry there is no bullied yet, you can configure the bullied using " + slackService.getCurrentUser().getName() + " `setup`"));
+            } else if(event.getThreadTs() != null) {
+                saveAnswer(event);
+            }
         }
+        else{
+            reply(session, event, new Message("Something is wrong :(, there isn't a channel"));
+        }
+
     }
 
     @Controller(events = EventType.REACTION_ADDED)
