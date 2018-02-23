@@ -1,5 +1,7 @@
 <div class="container">
-  <h1>Questions List</h1>
+  <mat-toolbar color = "primary">
+    <span>Questions</span>
+  </mat-toolbar>
   <table class="table">
     <thead>
     <tr>
@@ -14,12 +16,12 @@
     </thead>
     <tbody>
     <tr *ngFor="let question of questions">
-      <th>{{ question.id }}</th>
-      <th>{{ question.idChanel }}</th>
-      <th>{{ question.idQuestioner }}</th>
-      <th>{{ question.text }}</th>
-      <th>{{ question.answerText }}</th>
-      <th>{{ question.timeStamp }}</th>
+      <td>{{ question.id }}</td>
+      <td>{{ question.idChanel }}</td>
+      <td>{{ question.idQuestioner }}</td>
+      <td>{{ question.text }}</td>
+      <td>{{ question.answerText }}</td>
+      <td>{{ question.timeStamp }}</td>
       <td><a [routerLink]="['/answers/', question.timeStamp]">Show Answer</a></td>
     </tr>
     </tbody>

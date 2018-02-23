@@ -1,4 +1,10 @@
 <body>
-<h1>Bully Bot</h1>
-<a [routerLink]="['/channel']">Channels</a>
+<mat-toolbar color = "primary">
+  <span>Bully Bot</span>
+</mat-toolbar>
+
+<mat-card>
+  <button mat-raised-button color="accent" [routerLink]="['/channel']">Channels</button>
+  <!--<a [routerLink]="['/channel']">Channels</a>-->
+</mat-card>
 </body>
