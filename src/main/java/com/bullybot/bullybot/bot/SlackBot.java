@@ -70,7 +70,7 @@ public class SlackBot extends Bot {
             Chanel chanel = chanelRepository.findOne(event.getChannelId());
             chanel.setIdVictim(event.getText());
             chanelRepository.save(chanel);
-            reply(session, event, new Message("Bulled is: " + event.getText()));
+            reply(session, event, new Message("Habemus Victim"));
             stopConversation(event);
         } else if (!StringUtils.isEmpty(event.getText()) && "cancel".equalsIgnoreCase(event.getText())) {
             reply(session, event, new Message("Ok, you can setup the victim later."));
