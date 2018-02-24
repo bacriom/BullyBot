@@ -2,6 +2,7 @@
   <mat-toolbar color = "primary">
     <span>Questions</span>
   </mat-toolbar>
+  <mat-card>
   <table class="table">
     <thead>
     <tr>
@@ -10,7 +11,6 @@
       <th>Questioner</th>
       <th>Question</th>
       <th>Answer</th>
-      <th>Timestamp</th>
       <th>Show Detail</th>
     </tr>
     </thead>
@@ -21,9 +21,9 @@
       <td>{{ question.idQuestioner }}</td>
       <td>{{ question.text }}</td>
       <td>{{ question.answerText }}</td>
-      <td>{{ question.timeStamp }}</td>
-      <td><a [routerLink]="['/answers/', question.timeStamp]">Show Answer</a></td>
+      <td><button mat-raised-button color="accent" [routerLink]="['/answers/', question.timeStamp]">Show Answers</button></td>
     </tr>
     </tbody>
   </table>
+  </mat-card>
 </div>

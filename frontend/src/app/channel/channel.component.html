@@ -2,7 +2,7 @@
   <mat-toolbar color = "primary">
     <span>Channel</span>
   </mat-toolbar>
-
+<mat-card>
   <table class="table">
     <thead>
       <tr>
@@ -15,8 +15,9 @@
       <tr *ngFor="let channel of channels">
         <td>{{ channel.slackIdChanel }}</td>
         <td>{{ channel.idVictim }}</td>
-        <td><a [routerLink]="['/channel-questions', channel.slackIdChanel]">Show Questions</a></td>
+        <td><button mat-raised-button color="accent" [routerLink]="['/channel-questions', channel.slackIdChanel]">Qestions</button></td>
       </tr>
     </tbody>
   </table>
+</mat-card>
 </div>
