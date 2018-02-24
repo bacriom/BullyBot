@@ -27,7 +27,7 @@ module.exports = ""
 /***/ "./src/app/answers/answers.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <mat-toolbar color = \"primary\">\n    <span>Answers</span>\n  </mat-toolbar>\n\n  <table class=\"table\">\n    <thead>\n    <tr>\n      <th>Id</th>\n      <th>Text</th>\n      <th>Correct Answer</th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr *ngFor=\"let answer of answers\">\n      <td>{{ answer.id }}</td>\n      <td>{{ answer.text }}</td>\n      <td>{{ answer.correctAnswer }}}</td>\n    </tr>\n    </tbody>\n  </table>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <mat-toolbar color = \"primary\">\n    <span>Answers</span>\n  </mat-toolbar>\n<mat-card>\n  <table class=\"table\">\n    <thead>\n    <tr>\n      <th>Id</th>\n      <th>Text</th>\n      <th>Correct Answer</th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr *ngFor=\"let answer of answers\">\n      <td>{{ answer.id }}</td>\n      <td>{{ answer.text }}</td>\n      <td>{{ answer.correctAnswer }}</td>\n    </tr>\n    </tbody>\n  </table>\n</mat-card>\n</div>\n"
 
 /***/ }),
 
@@ -231,7 +231,7 @@ module.exports = ""
 /***/ "./src/app/channel-questions/channel-questions.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <mat-toolbar color = \"primary\">\n    <span>Questions</span>\n  </mat-toolbar>\n  <table class=\"table\">\n    <thead>\n    <tr>\n      <th>Id</th>\n      <th>Channel</th>\n      <th>Questioner</th>\n      <th>Question</th>\n      <th>Answer</th>\n      <th>Timestamp</th>\n      <th>Show Detail</th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr *ngFor=\"let question of questions\">\n      <td>{{ question.id }}</td>\n      <td>{{ question.idChanel }}</td>\n      <td>{{ question.idQuestioner }}</td>\n      <td>{{ question.text }}</td>\n      <td>{{ question.answerText }}</td>\n      <td>{{ question.timeStamp }}</td>\n      <td><a [routerLink]=\"['/answers/', question.timeStamp]\">Show Answer</a></td>\n    </tr>\n    </tbody>\n  </table>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <mat-toolbar color = \"primary\">\n    <span>Questions</span>\n  </mat-toolbar>\n  <mat-card>\n  <table class=\"table\">\n    <thead>\n    <tr>\n      <th>Id</th>\n      <th>Channel</th>\n      <th>Questioner</th>\n      <th>Question</th>\n      <th>Answer</th>\n      <th>Show Detail</th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr *ngFor=\"let question of questions\">\n      <td>{{ question.id }}</td>\n      <td>{{ question.idChanel }}</td>\n      <td>{{ question.idQuestioner }}</td>\n      <td>{{ question.text }}</td>\n      <td>{{ question.answerText }}</td>\n      <td><button mat-raised-button color=\"accent\" [routerLink]=\"['/answers/', question.timeStamp]\">Show Answers</button></td>\n    </tr>\n    </tbody>\n  </table>\n  </mat-card>\n</div>\n"
 
 /***/ }),
 
@@ -294,7 +294,7 @@ module.exports = ""
 /***/ "./src/app/channel/channel.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <mat-toolbar color = \"primary\">\n    <span>Channel</span>\n  </mat-toolbar>\n\n  <table class=\"table\">\n    <thead>\n      <tr>\n        <th>Channel</th>\n        <th>Victim</th>\n        <th>Action</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr *ngFor=\"let channel of channels\">\n        <td>{{ channel.slackIdChanel }}</td>\n        <td>{{ channel.idVictim }}</td>\n        <td><a [routerLink]=\"['/channel-questions', channel.slackIdChanel]\">Show Questions</a></td>\n      </tr>\n    </tbody>\n  </table>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <mat-toolbar color = \"primary\">\n    <span>Channel</span>\n  </mat-toolbar>\n<mat-card>\n  <table class=\"table\">\n    <thead>\n      <tr>\n        <th>Channel</th>\n        <th>Victim</th>\n        <th>Action</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr *ngFor=\"let channel of channels\">\n        <td>{{ channel.slackIdChanel }}</td>\n        <td>{{ channel.idVictim }}</td>\n        <td><button mat-raised-button color=\"accent\" [routerLink]=\"['/channel-questions', channel.slackIdChanel]\">Qestions</button></td>\n      </tr>\n    </tbody>\n  </table>\n</mat-card>\n</div>\n"
 
 /***/ }),
 
@@ -351,7 +351,7 @@ module.exports = ""
 /***/ "./src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<body>\n<mat-toolbar color = \"primary\">\n  <span>Bully Bot</span>\n</mat-toolbar>\n\n<mat-card>\n  <button mat-raised-button color=\"accent\" [routerLink]=\"['/channel']\">Channels</button>\n  <!--<a [routerLink]=\"['/channel']\">Channels</a>-->\n</mat-card>\n</body>\n"
+module.exports = "<body>\n<mat-toolbar color = \"primary\">\n  <span>Bully Bot</span>\n</mat-toolbar>\n\n<mat-card>\n  <button mat-raised-button color=\"accent\" [routerLink]=\"['/channel']\">Channels</button>\n</mat-card>\n</body>\n\n"
 
 /***/ }),
 
